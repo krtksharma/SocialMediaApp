@@ -3,6 +3,9 @@ import "./UpdateProfile.scss";
 import backImg from "../../assets/profile.png";
 import { useDispatch, useSelector } from "react-redux";
 import { updateMyProfile } from "../../redux/slice/appConfigSlice";
+import { KEY_ACCESS_TOKEN, removeItem } from "../../utils/localStorageManager";
+import { useNavigate } from "react-router-dom";
+import { axiosClient } from "../../utils/axiosClient";
 
 const UpdateProfile = () => {
   const myProfile = useSelector((state) => state.appConfigReducer.myProfile);
@@ -11,7 +14,7 @@ const UpdateProfile = () => {
   const [bio, setBio] = useState("");
   const [userImg, setUserImg] = useState("");
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   useEffect(() => {
     if (myProfile) {
       setName(myProfile.name || "");
@@ -32,13 +35,24 @@ const UpdateProfile = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-      dispatch(updateMyProfile({
-      name,
-      bio,
-      userImg,
-    }))
+    dispatch(
+      updateMyProfile({
+        name,
+        bio,
+        userImg,
+      })
+    );
   };
-
+  const handleAccountDelete = async () => {
+    try {
+      await axiosClient.delete(`/users/deleteUser`);
+      localStorage.removeItem("token");
+      removeItem(KEY_ACCESS_TOKEN);
+      navigate("/login");
+    } catch (e) {
+      console.log("error in deleting account", e);
+    }
+  };
   return (
     <div className="UpdateProfile">
       <div className="container">
@@ -80,7 +94,12 @@ const UpdateProfile = () => {
             <input type="submit" className="btn-primary" />
           </form>
 
-          <button className="delete-account btn-primary">Delete Account</button>
+          <button
+            className="delete-account btn-primary"
+            onClick={handleAccountDelete}
+          >
+            Delete Account
+          </button>
         </div>
       </div>
     </div>
