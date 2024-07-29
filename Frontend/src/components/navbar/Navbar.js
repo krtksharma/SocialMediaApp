@@ -24,7 +24,7 @@ const Navbar = () => {
     <div className="navbar">
       <div className="container">
         <h2 className="navbar-header hover-link" onClick={() => navigate("/")}>
-          Social Media
+          TOKO-MOKO
         </h2>
         <div className="right-side">
           <div
