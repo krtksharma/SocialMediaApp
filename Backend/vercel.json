@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "name": "task-manager",
-  "builds": [{ "src": "index.js", "use": "@vercel/node" }],
-  "routes": [{ "src": "/(.*)", "dest": "/index.js" }],
+  "name": "Social-Media",
+  "builds": [
+    { "src": "server.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/server.js" }
+  ],
   "env": {
     "MONGO_URI": "mongodb+srv://krtksharma7:6SV2XaUVLnJsxEFW@general.ltccm0o.mongodb.net/Authentication?retryWrites=true&w=majority&appName=General",
     "JWT_SECRET": "c80ac294a8e2b30b59092d40acd40b68d52b9254ebad6090478fc74b71ed9a20b16bf70b6bf3016ae2f930b263ef7a83e886727af0490d2f4e4093cc8a0ba4ea",
