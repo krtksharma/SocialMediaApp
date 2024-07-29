@@ -30,8 +30,8 @@ const allowedOrigin = 'http://localhost:3000';  // Update this to the front-end 
 
 // CORS configuration
 app.use(cors({
-  origin: allowedOrigin,  // Set to the exact origin of your front-end
-  credentials: true,  // Allow cookies and authorization headers
+  origin: '*',  // Allow requests from any origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
 
 app.use(express.json({limit:"10mb"}));
