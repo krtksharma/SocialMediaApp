@@ -6,6 +6,7 @@ import { AiOutlineLogout } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import { KEY_ACCESS_TOKEN, removeItem } from "../../utils/localStorageManager";
 import { axiosClient } from "../../utils/axiosClient";
+import tokomoko from "../../assets/TokoMoko.png";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ const Navbar = () => {
     <div className="navbar">
       <div className="container">
         <h2 className="navbar-header hover-link" onClick={() => navigate("/")}>
-          TOKO-MOKO
+          <img src={tokomoko} />
         </h2>
         <div className="right-side">
           <div
