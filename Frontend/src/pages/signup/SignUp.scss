@@ -1,0 +1,37 @@
+.signup {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .heading{
+      text-align: center;
+    }
+    .signup-box {
+      padding: 40px;
+      min-width: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+    }
+    label,
+    input {
+      display: block;
+      margin-bottom: 10px;
+      width: 100%;
+      outline: none;
+    }
+    input {
+      padding: 6px;
+    }
+    input,
+    button {
+      outline: auto;
+      border: none;
+    }
+    .submit{
+      background-color: white;
+    }
+  }
+  

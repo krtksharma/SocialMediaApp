@@ -1,0 +1,28 @@
+.navbar {
+  padding: 20px;
+  height: 60px;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 10px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: white;
+  .container {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    .right-side{
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      .logout{
+        display: flex;
+        align-items: center;
+        font-size: 1.8rem;
+      }
+    }
+  }
+}
