@@ -1,24 +1,41 @@
 .navbar {
-  padding: 20px;
-  height: 60px;
+  padding: 10px 20px; // Reduced padding to make more space for the logo
+  height: 80px; // Increased height to accommodate a larger logo
   border-bottom: 1px solid var(--border-color);
   margin-bottom: 10px;
   position: fixed;
   width: 100%;
   top: 0;
   background-color: white;
+
   .container {
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
-    .right-side{
+
+    .navbar-header {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      img {
+        height: 70px; // Increased the height of the logo
+        width: 70px; // Set the width equal to height to make it square
+        object-fit:scale-down;
+        background-color: white; // Match navbar background
+        padding: 5px; // Add some padding to blend with the background
+        border-radius: 50%; // Make the logo round
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); // Optional: add a subtle shadow for depth
+      }
+    }
+
+    .right-side {
       display: flex;
       align-items: center;
       gap: 20px;
 
-      .logout{
+      .logout {
         display: flex;
         align-items: center;
         font-size: 1.8rem;
