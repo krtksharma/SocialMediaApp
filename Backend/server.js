@@ -12,7 +12,6 @@ const authRoute = require('./routes/authRoutes');
 const postRoute = require('./routes/postRoutes');
 const userRoute = require('./routes/userRoutes');
 
-
 dotenv.config("./.env");
 
 // Configuration
@@ -23,15 +22,25 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-
-
-// Define the allowed origin
-const allowedOrigin = 'http://localhost:3000';  // Update this to the front-end URL
+// Define the allowed origins
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://tokomoko.vercel.app',
+  'https://tokomoko-git-main-krtksharmas-projects.vercel.app',
+  'https://tokomoko-784o9khlr-krtksharmas-projects.vercel.app'
+];
 
 // CORS configuration
 app.use(cors({
-  origin: '*',  // Allow requests from any origin
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true  // Allow credentials (cookies, etc.) to be sent
 }));
 
 app.use(express.json({limit:"10mb"}));
